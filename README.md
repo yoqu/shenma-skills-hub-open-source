@@ -1,7 +1,7 @@
 # SkillStack
 
 <p align="center">
-  面向个人、团队与社区的 AI Skill 开放平台：发现、沉淀、审核、发布和安装可复用的工程能力。
+  为小团队设计的自建 Skill 管理平台：统一沉淀、审核、发布和安装团队 Skill。
 </p>
 
 <p align="center">
@@ -14,33 +14,47 @@
 
 ![SkillStack 多端生态设计图](docs/images/skillstack-ecosystem.png)
 
-SkillStack 希望让 Skill 像开源软件包一样易于维护和复用。作者可以持续发布版本，团队可以建立审核和权限边界，使用者则可以通过 Web、桌面客户端或 `smskill` CLI 搜索并安装能力资产。
-
-> 项目正在持续开发中，API、数据模型和客户端行为仍可能调整。欢迎通过 Issue 参与需求讨论、提交问题和完善文档。
+SkillStack 解决小团队里 Skill 分散在成员电脑、群文件和代码仓库中的问题。团队可以部署自己的 Skill 平台，统一管理版本、可见范围、审核流程和安装入口，让成员使用同一套经过维护的 Skill。
 
 ## 为什么是 SkillStack
 
-- **不止是下载站**：覆盖创建、版本、审核、发布、收藏、安装和反馈闭环。
-- **团队与社区并存**：公开 Skill 面向社区发现，团队资产遵循成员权限和审核策略。
-- **多端入口**：同时提供 Web 管理端、Electron 桌面客户端和终端 CLI。
-- **可私有化部署**：前后端分离，使用 MySQL 持久化，并提供 Docker、Nginx 与 Jenkins 示例。
-- **面向长期演进**：正在建设订阅同步、多设备一致性、作者数据和团队资产健康度。
+- **小团队自建**：部署在自己的环境中，数据、成员和 Skill 资产由团队掌控。
+- **统一 Skill 资产**：把散落在不同成员和工具目录里的 Skill 汇总到团队空间。
+- **统一版本与审核**：新 Skill、新版本经过团队规则审核后再分发，避免成员各用各的版本。
+- **统一安装入口**：成员可通过 Web 浏览，通过桌面客户端或 CLI 安装到本地 Agent。
+- **公共与私有并存**：团队私有 Skill 只对成员开放，也可以把成熟能力发布到公共广场。
 
 ## 界面预览
 
-### Web 首页
+### Skill 广场
 
-![SkillStack Web 首页](docs/images/web-home.jpg)
+集中查看团队和社区公开的 Skill，支持分类、搜索、版本、作者和热度信息。
 
-### 登录与账户入口
+![SkillStack Web Skill 广场](docs/images/web-skill-plaza.jpg)
 
-![SkillStack Web 登录页](docs/images/web-login.jpg)
+### Skill 详情与安装
 
-更多产品视觉探索：
+查看可见范围、审核状态、版本、文件、质量评分和安装方式。
 
-![SkillStack 开源生态设计稿](docs/images/skillstack-open-source-hero-alt.png)
+![SkillStack Web Skill 详情](docs/images/web-skill-detail.jpg)
 
-> Web 截图来自当前仓库实际运行页面；生态设计图使用 `gpt-image-2` 生成，用于表达产品的多端协作方向，不代表最终 UI。
+### 桌面端 Skill 广场
+
+在客户端内发现团队 Skill，并直接添加到个人 Skill 集合。
+
+![SkillStack Desktop Skill 广场](docs/images/desktop-plaza.jpg)
+
+### 桌面端本地管理
+
+统一查看已添加和已安装的 Skill，支持本地导入、启用、删除和批量更新。
+
+![SkillStack Desktop 我的 Skills](docs/images/desktop-my-skills.jpg)
+
+### 桌面端安装设置
+
+配置自建服务地址、Skill 存储目录，以及 SkillStack、Agents 等不同安装目标。
+
+![SkillStack Desktop 设置](docs/images/desktop-settings.jpg)
 
 ## 核心功能
 
