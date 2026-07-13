@@ -104,6 +104,21 @@ npm --workspace desktop run dev:electron
 
 打包命令：`npm --workspace desktop run dist:mac`、`dist:win`、`dist:linux`。
 
+桌面端正式版本由 GitHub Actions 自动构建和发布。先同步更新桌面端版本号与
+lockfile 并提交，再推送同版本标签：
+
+```bash
+npm version 0.2.0 --workspace desktop --no-git-tag-version
+git add desktop/package.json desktop/package-lock.json package-lock.json
+git commit -m "chore(desktop): 发布 0.2.0"
+git tag desktop-v0.2.0
+git push origin main desktop-v0.2.0
+```
+
+标签会触发 macOS（Intel、Apple Silicon）、Windows（x64）和 Linux（x64）构建，
+并将 DMG、NSIS、AppImage 与 deb 安装包上传到同一个 GitHub Release。也可以在
+Actions 的 `Desktop Release` 页面输入已有标签手动重跑发布。
+
 ## CLI
 
 `smskill` 是 Node.js 20+ 终端客户端，适合脚本化安装、团队初始化和无 GUI 环境。
