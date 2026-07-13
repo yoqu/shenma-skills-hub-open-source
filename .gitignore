@@ -1,0 +1,60 @@
+# Java / Maven
+backend/target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.tmp
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.claude/worktrees/
+*.swp
+*.swo
+.DS_Store
+
+# Node / npm
+node_modules/
+packages/*/node_modules/
+packages/*/dist/
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
+desktop/node_modules/
+desktop/.vite/
+desktop/dist/
+desktop/dist-electron/
+desktop/release/
+desktop/*.tsbuildinfo
+desktop/.env.local
+desktop/.env.*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Docker volumes
+data/
+
+# Playwright / browser automation
+.playwright-mcp/
+
+# Logs
+*.log
+*.pid
+/tmp/*.log
+frontend/logs/
+desktop/logs/

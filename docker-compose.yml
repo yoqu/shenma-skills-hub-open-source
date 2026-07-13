@@ -1,0 +1,29 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: skillstack-mysql
+    restart: unless-stopped
+    ports:
+      - "${SKILLSTACK_DB_PORT:-3307}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: skillstack
+      MYSQL_DATABASE: skillstack
+      MYSQL_USER: skillstack
+      MYSQL_PASSWORD: skillstack
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+      - --default-time-zone=+08:00
+    volumes:
+      - skillstack-mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pskillstack"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  skillstack-mysql-data:
+    name: skillstack-mysql-data

@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens (mirrors docs/design-ui/tokens.css with TOKENS overrides from data.jsx) ─── */
+:root {
+  --font-sans: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* brand */
+  --brand-50: #eef2ff;
+  --brand-100: #e0e7ff;
+  --brand-200: #c7d2fe;
+  --brand-300: #a5b4fc;
+  --brand-400: #818cf8;
+  --brand-500: #6366f1;
+  --brand-600: #4f46e5;
+  --brand-700: #4338ca;
+  --brand-800: #3730a3;
+  --brand-900: #312e81;
+
+  /* neutrals — values come from data.jsx TOKENS (the prototype's actual render values) */
+  --bg: #f8fafc;
+  --bg-elev: #ffffff;
+  --bg-sunk: #f1f5f9;
+  --surface: #ffffff;
+  --line: #e2e8f0;
+  --line-soft: #eef0f4;
+  --line-strong: #cbd5e1;
+  --ink-1: #0f172a;
+  --ink-2: #475569;
+  --ink-3: #94a3b8;
+  --ink-4: #8a8f9e;
+  --ink-5: #b5b8c2;
+
+  --success: #10b981;
+  --success-bg: #ecfdf5;
+  --warn: #f59e0b;
+  --warn-bg: #fffbeb;
+  --danger: #ef4444;
+  --danger-bg: #fef2f2;
+  --info: #0ea5e9;
+  --info-bg: #f0f9ff;
+
+  --tag-1: #6366f1; --tag-1-bg: #eef2ff;
+  --tag-2: #ec4899; --tag-2-bg: #fdf2f8;
+  --tag-3: #14b8a6; --tag-3-bg: #f0fdfa;
+  --tag-4: #f59e0b; --tag-4-bg: #fffbeb;
+  --tag-5: #8b5cf6; --tag-5-bg: #f5f3ff;
+  --tag-6: #0ea5e9; --tag-6-bg: #f0f9ff;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+  --shadow-sm: 0 1px 2px rgba(15, 17, 22, 0.04), 0 1px 1px rgba(15, 17, 22, 0.03);
+  --shadow-md: 0 4px 16px rgba(15, 17, 22, 0.06), 0 1px 2px rgba(15, 17, 22, 0.04);
+  --shadow-lg: 0 12px 36px rgba(15, 17, 22, 0.08), 0 2px 6px rgba(15, 17, 22, 0.04);
+  --ring: 0 0 0 3px rgba(79, 70, 229, 0.18);
+
+  /* shadcn semantic tokens (HSL — used by components/ui/*) */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 243 75% 59%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 215 28% 90%;
+  --input: 215 28% 90%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--ink-1);
+  background: var(--bg);
+  font-feature-settings: 'cv11', 'ss03';
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    padding: 0 16px !important;
+    gap: 12px !important;
+    overflow: hidden;
+  }
+
+  .topbar-brand {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .topbar-nav,
+  .topbar-search {
+    display: none !important;
+  }
+
+  .topbar-actions {
+    margin-left: auto;
+    gap: 6px !important;
+    flex: 0 0 auto;
+  }
+
+  .auth-page {
+    overflow-x: hidden;
+  }
+
+  .auth-panel {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 28px 20px 36px !important;
+  }
+
+  .auth-visual {
+    display: none !important;
+  }
+
+  /* 隐藏窄屏下挤不下的辅助提示 */
+  .auth-hint-secondary {
+    display: none !important;
+  }
+}
+
+@keyframes sk-spin { to { transform: rotate(360deg); } }
+@keyframes sk-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }

@@ -1,0 +1,68 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: skillstack-backend
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    out-of-order: true
+    locations: classpath:db/migration
+  jackson:
+    default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: ${SKILLSTACK_MYBATIS_LOG_IMPL:org.apache.ibatis.logging.nologging.NoLoggingImpl}
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      id-type: auto
+
+skillstack:
+  jwt:
+    secret: ${SKILLSTACK_JWT_SECRET:skillstack-dev-secret-please-change-in-production-environment-32bytes-min}
+    ttl-seconds: ${SKILLSTACK_JWT_TTL_SECONDS:604800}
+    issuer: ${SKILLSTACK_JWT_ISSUER:skillstack}
+  cors:
+    # 留空时，CorsConfig 默认允许任意 localhost / 127.0.0.1 端口（开发期）。
+    # 生产请通过环境变量注入精确白名单（逗号分隔，支持 *.example.com 通配）。
+    allowed-origins: ${SKILLSTACK_CORS_ALLOWED_ORIGINS:}
+  storage:
+    type: local
+    local:
+      base-dir: ${SKILLSTACK_STORAGE_LOCAL_BASE_DIR:${user.home}/skillstack-uploads}
+      base-url: /uploads
+app:
+  oauth:
+    # 留空即可：后端首启会自动生成 state HMAC secret 并持久化到 system_config 表。
+    # 仅当需要跨实例共享或固定值时，才通过 OAUTH_STATE_SECRET 显式注入。
+    state-secret: ${OAUTH_STATE_SECRET:}
+    state-ttl-seconds: ${OAUTH_STATE_TTL_SECONDS:600}
+    frontend-origin: ${OAUTH_FRONTEND_ORIGIN:http://localhost:5173}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    com.skillstack: ${SKILLSTACK_LOG_LEVEL:INFO}

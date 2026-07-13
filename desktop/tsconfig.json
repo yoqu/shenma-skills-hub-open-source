@@ -1,0 +1,14 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.electron.json" }
+  ],
+  "compilerOptions": {
+    "paths": {
+      "@skillstack/ui": ["../packages/ui/src/index.ts"],
+      "@skillstack/ui/*": ["../packages/ui/src/*"]
+    }
+  }
+}

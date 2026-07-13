@@ -1,0 +1,43 @@
+{
+  "name": "smskill",
+  "version": "0.2.0",
+  "description": "SkillStack terminal client",
+  "type": "module",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "bin": {
+    "smskill": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsup src/cli.ts --format esm --target node20 --out-dir dist --clean",
+    "postbuild": "chmod +x dist/cli.js",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@inquirer/checkbox": "^5.2.1",
+    "axios": "^1.7.0",
+    "chalk": "^5.3.0",
+    "cli-table3": "^0.6.5",
+    "commander": "^12.1.0",
+    "ora": "^8.1.0",
+    "yauzl": "^3.1.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/yauzl": "^2.10.3",
+    "tsup": "^8.3.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.4.5",
+    "vitest": "^2.0.0"
+  }
+}
