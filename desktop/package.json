@@ -1,9 +1,13 @@
 {
   "name": "skillstack-desktop",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "SkillStack desktop client",
-  "author": "SkillStack",
+  "author": {
+    "name": "SkillStack",
+    "email": "yoqu@users.noreply.github.com"
+  },
+  "homepage": "https://github.com/yoqu/shenma-skills-hub-open-source",
   "type": "module",
   "main": "dist-electron/main.cjs",
   "scripts": {
@@ -88,6 +92,7 @@
     "linux": {
       "category": "Utility",
       "artifactName": "${productName}-${version}-linux-${arch}.${ext}",
+      "maintainer": "SkillStack <yoqu@users.noreply.github.com>",
       "target": [
         "AppImage",
         "deb"
